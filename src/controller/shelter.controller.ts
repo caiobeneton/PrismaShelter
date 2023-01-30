@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { findMany } from "../repository/shelter.repository.js";
+import { guests } from "../protocols/shelter.protocols.js";
+import { findMany, insertUnique } from "../repository/shelter.repository.js";
 
 async function listAll(req: Request, res: Response) {
     try {
@@ -11,6 +12,19 @@ async function listAll(req: Request, res: Response) {
     }
 }
 
+async function insertGuest(req: Request, res: Response) {
+    const newGuest = req.body as guests
+
+    try {
+        insertUnique(newGuest)
+
+        return res.sendStatus(201)
+    } catch (error) {
+        return res.status(500)
+    }
+}
+
 export {
-    listAll
+    listAll,
+    insertGuest
 }
