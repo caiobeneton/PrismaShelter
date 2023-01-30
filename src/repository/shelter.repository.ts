@@ -1,5 +1,5 @@
 import prisma from "../database/database.js";
-import { guests } from "../protocols/shelter.protocols.js";
+import { guests, newGuest } from "../protocols/shelter.protocols.js";
 
 async function findMany() {
     return prisma.guests.findMany()
@@ -23,9 +23,17 @@ async function findUnique(id: number) {
     })
 }
 
+async function updateUnique(id: number, guest: newGuest) {
+    return prisma.guests.update({
+        where: { id: id },
+        data: guest
+    })
+}
+
 export {
     findMany,
     insertUnique,
     removeUnique,
-    findUnique
+    findUnique,
+    updateUnique
 }

@@ -7,3 +7,4 @@ export type guestsEntity = {
 }
 
 export type guests = Omit<guestsEntity, "id">
+export type newGuest = Partial<guestsEntity>
