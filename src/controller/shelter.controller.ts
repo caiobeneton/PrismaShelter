@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { guests } from "../protocols/shelter.protocols.js";
-import { findMany, insertUnique, removeUnique } from "../repository/shelter.repository.js";
+import { findMany, findUnique, insertUnique, removeUnique } from "../repository/shelter.repository.js";
 
 async function listAll(req: Request, res: Response) {
     try {
@@ -36,8 +36,21 @@ async function removeGuest(req: Request, res: Response) {
     }
 }
 
+async function findById(req: Request, res: Response) {
+    const { id } = req.params
+
+    try {
+        const guestById = await findUnique(Number(id))
+
+        return res.send(guestById)
+    } catch (error) {
+        return res.status(500)
+    }
+}
+
 export {
     listAll,
     insertGuest,
-    removeGuest
+    removeGuest,
+    findById
 }

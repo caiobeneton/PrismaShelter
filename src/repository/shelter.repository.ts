@@ -17,8 +17,15 @@ async function removeUnique(id: number) {
     })
 }
 
+async function findUnique(id: number) {
+    return prisma.guests.findFirst({
+        where: { id: id },
+    })
+}
+
 export {
     findMany,
     insertUnique,
-    removeUnique
+    removeUnique,
+    findUnique
 }

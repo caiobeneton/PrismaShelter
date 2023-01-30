@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { insertGuest, listAll, removeGuest } from "../controller/shelter.controller";
+import { findById, insertGuest, listAll, removeGuest } from "../controller/shelter.controller";
 import { guestValidation } from "../middlewares/guestValidation.middleware.js";
 
 const router = Router();
 
 router.get("/findAll", listAll)
+router.get("/findById/:id", findById)
 router.post("/insert", guestValidation, insertGuest)
 router.delete("/delete/:id", removeGuest)
 
