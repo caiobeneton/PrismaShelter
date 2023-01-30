@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { findById, insertGuest, listAll, removeGuest, updateGuest } from "../controller/shelter.controller";
+import { findById, insertGuest, listAll, removeGuest, updateGuest } from "../controller/shelter.controller.js";
 import { guestValidation } from "../middlewares/guestValidation.middleware.js";
 
 const router = Router();
