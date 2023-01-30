@@ -11,7 +11,14 @@ async function insertUnique(guest: guests) {
     })
 }
 
+async function removeUnique(id: number) {
+    return prisma.guests.delete({
+        where: { id: id },
+    })
+}
+
 export {
     findMany,
-    insertUnique
+    insertUnique,
+    removeUnique
 }
