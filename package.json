@@ -8,11 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app.ts",
     "build": "tsc ./src/app.ts",
-    "start": "node ./dist/app.js"
+    "start": "node ./dist/app.js",
+    "prisma:seed": "npx prisma db seed"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/caiobeneton/PrismaShelter.git"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
